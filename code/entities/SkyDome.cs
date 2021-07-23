@@ -10,12 +10,13 @@ namespace NightSky.Entities
 	class SkyDome : RenderEntity
 	{
 		private const float _renderRadius = 32768.0f;
-		static private Material _skyMaterial = Material.Load( "materials/night_sky.vmat" );
+		private Material _skyMaterial;
 		private VertexBuffer _vb;
 		private bool _isRenderReady = false;
 
 		public SkyDome() : base()
 		{
+			_skyMaterial = Material.Load( "materials/night_sky.vmat" );
 			_vb = new();
 			_vb.Init( true );
 			GenerateSkyDome( _renderRadius );
