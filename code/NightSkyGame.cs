@@ -14,6 +14,18 @@ namespace NightSky
 		public override void PostLevelLoaded()
 		{
 			base.PostLevelLoaded();
+			RegularLighting();
+		}
+
+		[ClientRpc]
+		public void SpawnSkyDome()
+		{
+			_localSkyDome = new();
+		}
+
+		[ServerCmd( "nightsky_darkhack" )]
+		public static void DarkHack()
+		{
 			EnvironmentLightEntity lightEnv = All.OfType<EnvironmentLightEntity>().FirstOrDefault();
 
 			if ( lightEnv == null ) return;
@@ -24,11 +36,16 @@ namespace NightSky
 			lightEnv.SkyColor = Color.White;
 		}
 
-
-		[ClientRpc]
-		public void SpawnSkyDome()
+		[ServerCmd( "nightsky_regular" )]
+		public static void RegularLighting()
 		{
-			_localSkyDome = new();
+			EnvironmentLightEntity lightEnv = All.OfType<EnvironmentLightEntity>().FirstOrDefault();
+
+			if ( lightEnv == null ) return;
+			lightEnv.Brightness = 0.0f;
+			lightEnv.SkyIntensity = 0.0f;
+			lightEnv.Color = Color.Black;
+			lightEnv.SkyColor = Color.Black;
 		}
 
 		/// <summary>
