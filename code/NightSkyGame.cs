@@ -1,4 +1,5 @@
 ﻿using Sandbox;
+using System.Linq;
 
 namespace NightSky
 {
@@ -9,6 +10,20 @@ namespace NightSky
 		public NightSkyGame()
 		{
 		}
+
+		public override void PostLevelLoaded()
+		{
+			base.PostLevelLoaded();
+			EnvironmentLightEntity lightEnv = All.OfType<EnvironmentLightEntity>().FirstOrDefault();
+
+			if ( lightEnv == null ) return;
+			// Lil hack to darken the map EVEN FURTHER by sucking the color out of lights
+			lightEnv.Brightness = -0.5f;
+			lightEnv.SkyIntensity = -0.5f;
+			lightEnv.Color = Color.White;
+			lightEnv.SkyColor = Color.White;
+		}
+
 
 		[ClientRpc]
 		public void SpawnSkyDome()

@@ -2,7 +2,7 @@
 
 namespace NightSky
 {
-    class MinimalPawn : Player
+	class MinimalPawn : Player
 	{
 		private TimeSince timeSinceJumpReleased;
 		public override void Respawn()

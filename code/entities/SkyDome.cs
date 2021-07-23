@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Sandbox;
 
 namespace NightSky.Entities
@@ -88,7 +84,7 @@ namespace NightSky.Entities
 
 		public override void DoRender( SceneObject obj )
 		{
-			if(!_isRenderReady)
+			if ( !_isRenderReady )
 			{
 				return;
 			}
