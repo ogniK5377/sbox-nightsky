@@ -3,4 +3,69 @@
 Layer0
 {
 	shader "night_sky.vfx"
+
+	//---- Important Questions ----
+	F_DO_YOU_LIKE_SHITTING 1
+	F_GET_ONE_MILLION_DOLLARS 1
+
+	//---- Global Clouds ----
+	CloudColor "[0.207843 0.294118 0.258824 1.000000]"
+	CloudColorIntensity "1.000"
+	CloudDensity "1.100"
+	CloudMoveDirection "[0.010 0.020]"
+	CloudMoveDivider "2.000"
+	CloudNoiseScale "76.046"
+	CloudOpacity "1.000"
+	CloudPower "3.000"
+	CloudSphereize "0.300"
+
+	//---- Horizon Fog ----
+	HorizonFogColor "[0.301961 0.301961 0.301961 1.000000]"
+	HorizonFogColorIntensity "1.000"
+	HorizonFogMoveDirection "[0.010 0.010]"
+	HorizonFogMoveDivider "2.000"
+	HorizonFogNoisePower "3.000"
+	HorizonFogNoiseScale "128.000"
+	HorizonFogOpacity "1.000"
+	HorizonFogPower "16.000"
+	HorizonFogSphereize "0.300"
+
+	//---- Moon ----
+	MoonColor1 "[1.000000 1.000000 1.000000 1.000000]"
+	MoonColor2 "[0.164706 0.164706 0.164706 1.000000]"
+	MoonColorIntensity "[3.000 0.100]"
+	MoonDirection "[0.400 0.400 1.000]"
+	MoonFeather "0.010"
+	MoonMaskFeather "0.582"
+	MoonMaskOffset "[0.086 0.114 0.143]"
+	MoonMaskSize "0.278"
+	MoonOpacity "1.000"
+	MoonSize "0.291"
+
+	//---- Render Toggle ----
+	RenderGlobalClouds "1"
+	RenderHorizonFog "1"
+	RenderMoon "1"
+	RenderSkyGradient "1"
+	RenderStars "1"
+
+	//---- Sky Gradient ----
+	GradientHorizonPower "2.000"
+	HorizonColor "[0.000000 0.000000 0.003922 0.000000]"
+	SkyColor "[0.000000 0.000000 0.050980 0.000000]"
+
+	//---- Stars ----
+	StarAngleOffset "44.300"
+	StarColor "[0.160784 0.160784 0.160784 0.200000]"
+	StarColorIntensity "1.500"
+	StarDensity "16.870"
+	StarMoveDirection "[0.010 0.020]"
+	StarMoveDivider "2.000"
+	StarOpacity "1.000"
+	StarPower "[30.550 60.000]"
+	StarScale "4.620"
+	StarSphereize "2.000"
+
+	//---- Vertex Shader ----
+	ParentObjectToPlayersCamera "1"
 }
