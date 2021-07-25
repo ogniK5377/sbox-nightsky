@@ -1,4 +1,5 @@
 ﻿using Sandbox;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace NightSky
@@ -6,7 +7,9 @@ namespace NightSky
 	[Library( "nightsky" )]
 	public partial class NightSkyGame : Sandbox.Game
 	{
-		private Entities.SkyDome _localSkyDome;
+		private TimeSince _timeSinceJoin;
+		private bool _hasSkyEntity;
+		private Entities.EnvNightSky _nightSky;
 		public NightSkyGame()
 		{
 		}
@@ -15,12 +18,37 @@ namespace NightSky
 		{
 			base.PostLevelLoaded();
 			RegularLighting();
+
+			// https://github.com/Facepunch/sbox-issues/issues/494
+			List<Entity> ents = All.OfType<Entity>().Where( e => e.EngineEntityName == "sky_camera" ).ToList();
+			foreach(Entity e in ents)
+			{
+				e.Delete();
+			}
 		}
 
 		[ClientRpc]
-		public void SpawnSkyDome()
+		public void SpawnSky()
 		{
-			_localSkyDome = new();
+			_timeSinceJoin = 0.0f;
+		}
+
+		[Event.Frame]
+		public void OnFrame()
+		{
+			if ( Host.IsServer )
+			{
+				return;
+			}
+
+			// https://github.com/Facepunch/sbox-issues/issues/493
+			if ( !_hasSkyEntity && _timeSinceJoin > 0.1f )
+			{
+
+				Log.Warning( "Created sky" );
+				_nightSky = new();
+				_hasSkyEntity = true;
+			}
 		}
 
 		[ServerCmd( "nightsky_darkhack" )]
@@ -58,7 +86,7 @@ namespace NightSky
 			MinimalPawn ply = new();
 			client.Pawn = ply;
 
-			SpawnSkyDome( To.Single( client ) );
+			SpawnSky( To.Single( client ) );
 
 			ply.Respawn();
 		}

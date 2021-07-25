@@ -14,7 +14,7 @@ Layer0
 	CloudDensity "1.100"
 	CloudMoveDirection "[0.010 0.020]"
 	CloudMoveDivider "2.000"
-	CloudNoiseScale "76.046"
+	CloudNoiseScale "48.878"
 	CloudOpacity "1.000"
 	CloudPower "3.000"
 	CloudSphereize "0.300"
